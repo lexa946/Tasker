@@ -2,4 +2,4 @@ venv
 .idea
 migrations
 tasks.db
-Dockerfile
+
