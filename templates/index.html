@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block crud_container %}
+
+
+<section>
+    <form action="/main" method="post">
+        <div class="col-auto">
+            <div class="input-group mb-3">
+                <input type="text" name="name" value="{{ name }}" class="form-control"
+                       placeholder="Введи название" aria-label="Add name" aria-describedby="button-aadon2"/>
+                <input type="text" name="description" value="{{ description }}" class="form-control"
+                       placeholder="Добавь описание" aria-label="Add description" aria-describedby="button-aadon2"/>
+                <button type="submit" class="btn btn-outline-primary" id="button-addon2"
+                        data-mdb-ripple-color="dark">Добавить
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</section>
+
+
+{% if task %}
+<article class="card container-fluid">
+    <br/>
+    <h2>ID: {{task.id}}</h2>
+    <p><strong>Text: {{task.name}}</strong></p>
+    <p><strong>Text: {{task.description}}</strong></p>
+</article>
+{% else %}
+
+
+<section class="container-fluid">
+    <h2>Задачи</h2>
+    <br>
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between" id="task-id-{{ task.id }}"><div>{{ task.id }}. <a href="/main/task/{{task.id}}" class="link">{{ task.name }}</a></div>
+                <button id="delete" class="btn btn-danger" type="submit" value="{{ task.id }}" style="alight: right;">Удалить</button></li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endif %}
+
+
+{% endblock %}
