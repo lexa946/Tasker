@@ -6,10 +6,14 @@
 
 <section>
     <form action="/main" method="post">
+        {% if exception %}
+            <p>{{ exception }}</p>
+
+        {% endif %}
         <div class="col-auto">
             <div class="input-group mb-3">
                 <input type="text" name="name" value="{{ name }}" class="form-control"
-                       placeholder="Введи название" aria-label="Add name" aria-describedby="button-aadon2"/>
+                       placeholder="Введи название" aria-label="Add name" aria-describedby="button-aadon2" required/>
                 <input type="text" name="description" value="{{ description }}" class="form-control"
                        placeholder="Добавь описание" aria-label="Add description" aria-describedby="button-aadon2"/>
                 <button type="submit" class="btn btn-outline-primary" id="button-addon2"

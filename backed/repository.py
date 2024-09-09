@@ -1,11 +1,21 @@
-from sqlalchemy import select, delete
+from sqlalchemy import select, delete, func
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from backed.db import new_session
 from models.tasks import TaskOrm
 from shemas.tasks import STaskAdd, STask
 
+from config import MAX_COUNT_TASKS
+
+
+
+
 
 class TaskRepository:
+
+
+
+
     @classmethod
     async def add_one(cls, task: STaskAdd) -> int:
         async with new_session() as db:
@@ -48,3 +58,13 @@ class TaskRepository:
                 delete(TaskOrm).where(TaskOrm.id == task_id)
             )
             await db.commit()
+
+    @classmethod
+    async def get_count_tasks(cls):
+        async with new_session() as db:
+            db: AsyncSession
+            count = await db.scalar(
+                select(func.count()).select_from(TaskOrm)
+            )
+            return count
+
