@@ -5,7 +5,7 @@
 
 
 <section>
-    <form action="/main" method="post">
+    <form action="/tasker" method="post">
         {% if exception %}
             <p>{{ exception }}</p>
 
@@ -43,7 +43,7 @@
     <div class="card">
         <ul class="list-group list-group-flush">
             {% for task in tasks %}
-            <li class="list-group-item d-flex justify-content-between" id="task-id-{{ task.id }}"><div>{{ task.id }}. <a href="/main/task/{{task.id}}" class="link">{{ task.name }}</a></div>
+            <li class="list-group-item d-flex justify-content-between" id="task-id-{{ task.id }}"><div>{{ task.id }}. <a href="/tasker/task/{{task.id}}" class="link">{{ task.name }}</a></div>
                 <button id="delete" class="btn btn-danger" type="submit" value="{{ task.id }}" style="alight: right;">Удалить</button></li>
             {% endfor %}
         </ul>

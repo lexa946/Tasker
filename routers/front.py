@@ -7,7 +7,7 @@ from routers.tasks import all_tasks, add_task, get_task
 from shemas.tasks import STaskAdd
 
 
-router = APIRouter(prefix='/main', tags=['Main'])
+router = APIRouter(prefix='/tasker', tags=['Main'])
 templates = Jinja2Templates(directory="templates")
 
 
